@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" modified="2026-11-17T23:00:00.000Z" agent="ChatGPT" version="24.7.17" type="device">
+  <diagram id="q2-leilao" name="Diagrama de classes">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2200" pageHeight="1850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main" value="&lt;b&gt;Main&lt;/b&gt;&lt;hr&gt;Monta o cenário, registra interessados, envia lances, troca a estratégia e cria a fatura." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="900" y="25" width="300" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lot" value="&lt;b&gt;Lot&lt;/b&gt; &lt;i&gt;Subject / Context&lt;/i&gt;&lt;hr&gt;name, category&lt;br&gt;startingPrice, reservePrice, currentBid&lt;br&gt;observers: List&amp;lt;BidObserver&amp;gt;&lt;br&gt;bids: List&amp;lt;Bid&amp;gt;&lt;br&gt;commissionStrategy: CommissionStrategy&lt;br&gt;+ addObserver() / removeObserver()&lt;br&gt;+ placeBid() / close()&lt;br&gt;+ setCommissionStrategy()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="820" y="210" width="440" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="strategy" value="&lt;b&gt;CommissionStrategy&lt;/b&gt; &lt;i&gt;interface&lt;/i&gt;&lt;hr&gt;+ calculate(saleValue)&lt;br&gt;&lt;b&gt;Strategy&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="320" height="115" as="geometry" />
+        </mxCell>
+        <mxCell id="artcommission" value="&lt;b&gt;ArtCommission&lt;/b&gt;&lt;hr&gt;20% do valor" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="25" y="430" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="vehiclecommission" value="&lt;b&gt;VehicleCommission&lt;/b&gt;&lt;hr&gt;8%, limitada a R$ 5.000" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="25" y="590" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="propertycommission" value="&lt;b&gt;PropertyCommission&lt;/b&gt;&lt;hr&gt;3% + R$ 1.500" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="25" y="750" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="electronicscommission" value="&lt;b&gt;ElectronicsCommission&lt;/b&gt;&lt;hr&gt;12%, mínimo R$ 50" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="25" y="910" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="bidobserver" value="&lt;b&gt;BidObserver&lt;/b&gt; &lt;i&gt;interface&lt;/i&gt;&lt;hr&gt;getName()&lt;br&gt;onNewBid(lot, bid)&lt;br&gt;&lt;b&gt;Observer&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="900" y="570" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="participant" value="&lt;b&gt;Participant&lt;/b&gt;&lt;hr&gt;implements BidObserver&lt;br&gt;follow(lot)&lt;br&gt;unfollow(lot)&lt;br&gt;placeBid(lot, value)&lt;br&gt;Exibe novo lance." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="420" y="790" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="panel" value="&lt;b&gt;AuctioneerPanel&lt;/b&gt;&lt;hr&gt;implements BidObserver&lt;br&gt;Exibe maior lance e total de lances." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="880" y="790" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="auditor" value="&lt;b&gt;Auditor&lt;/b&gt;&lt;hr&gt;implements BidObserver&lt;br&gt;Registra lances aceitos com data e hora." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="790" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="bid" value="&lt;b&gt;Bid&lt;/b&gt;&lt;hr&gt;bidderName&lt;br&gt;value&lt;br&gt;dateTime" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1510" y="390" width="300" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="seller" value="&lt;b&gt;SellerSettlement&lt;/b&gt;&lt;hr&gt;Imprime valor da venda,&lt;br&gt;comissão vigente no encerramento&lt;br&gt;e valor líquido ao vendedor." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="350" y="1120" width="310" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="invoiceprinter" value="&lt;b&gt;InvoicePrinter&lt;/b&gt;&lt;hr&gt;Recebe InvoiceComponent.&lt;br&gt;Imprime linhas e total sem&lt;br&gt;conhecer serviços concretos." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1790" y="980" width="310" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="invoicecomponent" value="&lt;b&gt;InvoiceComponent&lt;/b&gt; &lt;i&gt;interface&lt;/i&gt;&lt;hr&gt;getLines()&lt;br&gt;getSaleValue()&lt;br&gt;getTotal()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1530" y="1190" width="330" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sale" value="&lt;b&gt;Sale&lt;/b&gt;&lt;hr&gt;implements InvoiceComponent&lt;br&gt;Lote e valor de venda." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="1430" width="290" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="decorator" value="&lt;b&gt;ServiceDecorator&lt;/b&gt; &lt;i&gt;abstract&lt;/i&gt;&lt;hr&gt;implements InvoiceComponent&lt;br&gt;component: InvoiceComponent&lt;br&gt;Adiciona descrição e custo.&lt;br&gt;&lt;b&gt;Decorator&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="1430" width="350" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="insurance" value="&lt;b&gt;TransportInsurance&lt;/b&gt;&lt;hr&gt;1,5% do valor de venda" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="800" y="1690" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="certificate" value="&lt;b&gt;AuthenticityCertificate&lt;/b&gt;&lt;hr&gt;R$ 300 fixos" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="1690" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="packaging" value="&lt;b&gt;SpecialPackaging&lt;/b&gt;&lt;hr&gt;R$ 180 fixos" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="1690" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="delivery" value="&lt;b&gt;ExpressDelivery&lt;/b&gt;&lt;hr&gt;R$ 450 fixos" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1730" y="1690" width="270" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="cria e controla" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="main" target="lot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="usa / troca em tempo de execução" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="lot" target="strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="artcommission" target="strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="vehiclecommission" target="strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="propertycommission" target="strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="electronicscommission" target="strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="notifica observadores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="lot" target="bidobserver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="participant" target="bidobserver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="panel" target="bidobserver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="auditor" target="bidobserver">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="registra lances" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="lot" target="bid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="consulta venda e comissão" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="seller" target="lot">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="imprime sem conhecer decorators" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="invoiceprinter" target="invoicecomponent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="sale" target="invoicecomponent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="implements" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="decorator" target="invoicecomponent">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="extends" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="insurance" target="decorator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="extends" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="certificate" target="decorator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="extends" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="packaging" target="decorator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="extends" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=block;endFill=0;" edge="1" parent="1" source="delivery" target="decorator">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="cria interessados" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="main" target="participant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="cria painel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="main" target="panel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" value="cria auditor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" edge="1" parent="1" source="main" target="auditor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
